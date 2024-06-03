@@ -1,4 +1,17 @@
-# This folder contains 3 pandas datasets:
+# Lynred data challenge
+**what is hidden inside this thermal image ?**
+From the raw image to the corrected image using Non Uniform Correction method
+
+Here are the challenge have to solve: 
+
+* NUC the first sequence of images recorded in the same environnement as the calibration images
+* NUC the second sequence of images recorded in the another environnement of the calibration images.
+* NUC the third sequence of images sequence without any calibration
+
+
+
+## Dataset provided by the compay
+### This folder contains 3 pandas datasets:
 * `scene.hdf5` : contains a sequence of a natural scene images (14bits images)
 * `scene2.hdf5` : contains a sequence of a natural scene images (14bits images)
 * `scene3.hdf5` : contains a sequence of a natural scene images (14bits images)
@@ -16,7 +29,7 @@ Each of those Dataframe contains a serie of images with their meta-datas.
 
 Correcting the scenes using `calibration_set_1.hdf5` is **easier** than using `calibration_set_2.hdf5`.
 
-# The usefull columns of the dataframes are :
+### The usefull columns of the dataframes are :
 `image` : the RAW image (numpy array)
 `cint`, `gsk`, `gsk_volt`, `tint`, `gfid` : some electronics parameters
 `vtemp_plot` : tension (V) of a camera temperature sensor
