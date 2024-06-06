@@ -25,14 +25,17 @@ Iterating on this idea of constructing a filter and with some words from Ronald 
 
 Returning to the basics, we realized we could find the calibration image which had the closest temperature to each frame of the scene. This provided the best results we had seen -- see `video/with_controlled_env_calibration/calibration_matching/output-matching.avi` for results -- and would act as a baseline for all future results.
 
-### Black body calibration
+### Black body calibration -- AR
 TODO: Explain black body methods
 
-### No calibration
-TODO: Explain pseudo-calibration "lineage" and how/why we arrived at the stride method.
+### No calibration -- CT
+TODO: 
+* WP to explain the variance stacking and blocks
 
-#### Challenges
-TODO: Detail existing challenges - getting good "pseudo calibration" video, contrasting and post-processing adjustments
+* CT to explain and how/why we arrived at the stride method, and the necessary post processing.
 
-#### Metrics
-TODO: Some metrics? 
+#### Metrics -- TV
+TODO: Some metrics?
+
+#### Remaining challenges -- WP
+TODO: Discuss about why the shutter approach isnt the best -- and how always updating to find some "maximal" pseudo-calibration live or right after capturing video might be feasible. 
