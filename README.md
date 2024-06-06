@@ -1,5 +1,6 @@
 # Lynred data challenge
 **What is hidden inside this thermal image ?**
+
 The challenges to be solved: 
 
 * NUC the first sequence of images recorded in the same environnement as the calibration images
@@ -25,10 +26,13 @@ Iterating on this idea of constructing a filter and with some words from Ronald 
 Returning to the basics, we realized we could find the calibration image which had the closest temperature to each frame of the scene. This provided the best results we had seen -- see `video/with_controlled_env_calibration/calibration_matching/output-matching.avi` for results -- and would act as a baseline for all future results.
 
 ### Black body calibration
-
+TODO: Explain black body methods
 
 ### No calibration
+TODO: Explain pseudo-calibration "lineage" and how/why we arrived at the stride method.
 
 #### Challenges
+TODO: Detail existing challenges - getting good "pseudo calibration" video, contrasting and post-processing adjustments
 
 #### Metrics
+TODO: Some metrics? 
