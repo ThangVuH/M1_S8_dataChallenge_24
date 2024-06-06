@@ -31,8 +31,8 @@ TODO: Explain black body methods
 ### No calibration -- CT
 TODO: 
 * WP to explain the variance stacking and blocks
-
-* CT to explain and how/why we arrived at the stride method, and the necessary post processing.
+* CT to explain and how/why we arrived at the stride method
+* WP to explain auto-adjustment of contrast
 
 #### Metrics -- TV
 TODO: Some metrics?
