@@ -1,44 +1,34 @@
 # Lynred data challenge
-**what is hidden inside this thermal image ?**
-From the raw image to the corrected image using Non Uniform Correction method
-
-Here are the challenge have to solve: 
+**What is hidden inside this thermal image ?**
+The challenges to be solved: 
 
 * NUC the first sequence of images recorded in the same environnement as the calibration images
+  * We called this the "controlled environment" calibration set.
 * NUC the second sequence of images recorded in the another environnement of the calibration images.
-* NUC the third sequence of images sequence without any calibration
+  * We called this the "black body" calibration set.
+* NUC the third sequence of images sequence without any calibration.
+
+## An overview of provided files and how to run
+* The "video" directory contains all of the videos from methods we attempted to use, or experiments we did. Some are not relevant, in the following report, we will reference the pertinent video for the methods we are describing.
+* The "code" directory contains:
+  * final notebooks -- these will walk you through the code of our major experiments and the final approach for each level of the challenge
+  * test and replication -- more usable interface and utilities for running the third challenge denoising algorithm on videos and gathering metrics
+  * test notebooks -- our experiments testing different methodologies for denoising images, mostly a papertrail left for documentation purposes, it is more useful to use the final notebooks which were made with replicability in mind
+* The "final" and "test and replication" notebooks are documented internally, i.e. they include some explanations of approach and how to run. For deeper explanations of our approaches, see the following section.
+
+## Our solutions to the three levels of challenge
+### Controlled environment calibration
+Initially, in our attempts to understand the challenge, we began with some basic filtering and the idea of constructing a filter from an average of the calibration dataset. We later learned this approach has a name -- temporal averaging. Temporal averaging did an ok job, but some of the scenes were left very dark.
+
+Iterating on this idea of constructing a filter and with some words from Ronald Phllypo, we discovered we could model the response (or gain) and offset of the sensor using linear regression. This approach worked well, but we discovered it was, in fact, overkill for the first challenge. It would prove more useful for the second challenge - black body calibration.
+
+Returning to the basics, we realized we could find the calibration image which had the closest temperature to each frame of the scene. This provided the best results we had seen -- see `video/with_controlled_env_calibration/calibration_matching/output-matching.avi` for results -- and would act as a baseline for all future results.
+
+### Black body calibration
 
 
+### No calibration
 
-## Dataset provided by the compay
-### This folder contains 3 pandas datasets:
-* `scene.hdf5` : contains a sequence of a natural scene images (14bits images)
-* `scene2.hdf5` : contains a sequence of a natural scene images (14bits images)
-* `scene3.hdf5` : contains a sequence of a natural scene images (14bits images)
-* `calibration_set_1.hdf5` : contains some calibration images (14bits images)
-* `calibration_set_2.hdf5` : contains another set of calibration images (14bits images)
+#### Challenges
 
-Those files contains pandas (v1.3.3) dataframe and can be opened in python with :
-```
-import pandas as pd
-data = pd.read_hdf("xxxx.hdf5")
-```
-(replacing `xxxx.hdf5` by the filename)
-
-Each of those Dataframe contains a serie of images with their meta-datas.
-
-Correcting the scenes using `calibration_set_1.hdf5` is **easier** than using `calibration_set_2.hdf5`.
-
-### The usefull columns of the dataframes are :
-`image` : the RAW image (numpy array)
-`cint`, `gsk`, `gsk_volt`, `tint`, `gfid` : some electronics parameters
-`vtemp_plot` : tension (V) of a camera temperature sensor
-`vtemp_ghostline`: numeric version of `vtemp_plot`
-`t_cn` : black body temperature (if applicable)
-`t_etuve` : measured hoven temperature
-`t_etuve_set` : set hoven temperature
-`t_fpa` : converted `vtemp_plot` into degree °C
-`timestamp` : time
-`date` : formated version of timestamp
-`framerate` : camera framerate (Hz)
-`brms` : the temporal standard deviation image of the pixels (temporal noise) (if applicable).
+#### Metrics
